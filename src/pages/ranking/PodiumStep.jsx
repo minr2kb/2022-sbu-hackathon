@@ -22,8 +22,8 @@ export default function PodiumStep({ podium, winner }) {
 					visible: {
 						opacity: 1,
 						transition: {
-							delay: 1 + (offset + 2),
-							duration: 0.75,
+							delay: 1 + offset,
+							duration: 0.3,
 						},
 					},
 					hidden: { opacity: 0 },
@@ -48,8 +48,8 @@ export default function PodiumStep({ podium, winner }) {
 					display: "flex",
 					borderTopLeftRadius: ".5rem",
 					borderTopRightRadius: ".5rem",
-					borderColor: "rgba(190,24,93,1)",
-					backgroundColor: "rgba(219,39,119,1)",
+					borderColor: "rgb(72, 188, 167)",
+					backgroundColor: "rgb(52, 151, 144)",
 					marginBottom: -1,
 					filter: `opacity(${0.1 + offset / podium.length})`,
 				}}
@@ -61,7 +61,7 @@ export default function PodiumStep({ podium, winner }) {
 						opacity: 1,
 						transition: {
 							delay: 1 + offset,
-							duration: 2,
+							duration: 1,
 							ease: "backInOut",
 						},
 					},

@@ -19,7 +19,7 @@ export default function Podium({ winners }) {
 				justifyItems: "center",
 				alignContent: "flex-end",
 				alignItems: "flex-end",
-				borderBottom: "1px solid #e5e7eb",
+				borderBottom: "3px solid #AEAEAE",
 				height: 250,
 			}}
 		>
