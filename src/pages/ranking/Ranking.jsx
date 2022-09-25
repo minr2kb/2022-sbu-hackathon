@@ -53,6 +53,15 @@ const Ranking = () => {
 			</Grid>
 
 			{/* <div>5 top runners during last 7 days</div> */}
+			<Grid
+				container
+				alignItems={"center"}
+				justifyContent={"space-between"}
+			>
+				<Typography variant="body1">
+					Longest among last 7 days
+				</Typography>
+			</Grid>
 			<Grid p={2}>
 				<Podium winners={podiumData} />
 			</Grid>
