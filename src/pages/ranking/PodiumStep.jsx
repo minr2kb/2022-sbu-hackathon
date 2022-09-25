@@ -33,9 +33,9 @@ export default function PodiumStep({ podium, winner }) {
 					src={`https://i.pravatar.cc/64?u=${winner.id}`}
 					alt=""
 					style={{
-						width: "2.75rem",
+						width: "2.5rem",
 						overflow: "hidden",
-						height: "2.75rem",
+						height: "2.5rem",
 						borderRadius: 9999,
 					}}
 				/>
@@ -43,7 +43,7 @@ export default function PodiumStep({ podium, winner }) {
 
 			<motion.div
 				style={{
-					width: "4rem",
+					width: "3.3rem",
 					placeContent: "center",
 					display: "flex",
 					borderTopLeftRadius: ".5rem",
