@@ -30,7 +30,7 @@ export default function PodiumStep({ podium, winner }) {
 				}}
 			>
 				<img
-					src={`https://i.pravatar.cc/64?u=${winner.id}`}
+					src={`https://i.pravatar.cc/64?u=${winner.userID}`}
 					alt=""
 					style={{
 						width: "2.5rem",

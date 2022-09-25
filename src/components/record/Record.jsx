@@ -1,25 +1,31 @@
 import React from "react";
-import {
-	Avatar,
-	Button,
-	ButtonGroup,
-	Grid,
-	Typography,
-	IconButton,
-} from "@mui/material";
+import axios from "axios";
+import { useEffect, useState } from "react";
+
+import { Avatar, Grid, Typography } from "@mui/material";
 import LocationOnRounded from "@mui/icons-material/LocationOnRounded";
 
 const basedata = {
+	userID: 0,
 	region: "Stony Brook, NY",
 	date: "22.09.24",
 	distance: 3.7,
 	weight: 2.3,
 	duration: "50:38:23",
 };
+
 const Record = ({ data = basedata }) => {
 	// const recordData = { date: "22.09.24", distance: 3.7, weight: 2.3 };
 	const recordData = data;
-	const userID = 0;
+	const [username, setUsername] = useState("something");
+
+	useEffect(() => {
+		axios
+			.get(
+				`https://sbuhackathon2022.herokuapp.com/user/${recordData.userID}`
+			)
+			.then(res => setUsername(res.data.username));
+	}, [recordData]);
 
 	return (
 		// <Grid
@@ -72,22 +78,23 @@ const Record = ({ data = basedata }) => {
 					alignItems={"center"}
 					justifyContent={"space-between"}
 				>
-					<Typography variant="body2">{userID}</Typography>
+					<Typography variant="body2">{username}</Typography>
 					<Grid container alignItems={"center"}>
 						<Typography variant="body5">
 							{recordData.region}
 						</Typography>
-
-						<LocationOnRounded
-							color="primary"
-							sx={{ fontSize: "18px", ml: 0.5 }}
-						/>
 					</Grid>
 				</Grid>
-				<Typography variant="body5" color={"text.secondary"}>
-					{recordData.distance} miles / {recordData.weight}kg /
-					{recordData.duration}
-				</Typography>
+				<Grid container alignItems={"center"}>
+					<LocationOnRounded
+						color="primary"
+						sx={{ fontSize: "15px", mr: 0.5 }}
+					/>
+					<Typography variant="body5" color={"text.secondary"}>
+						Stony Brook, NY / {recordData.distance} miles /{" "}
+						{recordData.weight}kg /{recordData.duration}
+					</Typography>
+				</Grid>
 			</Grid>
 		</Grid>
 	);
