@@ -4,10 +4,9 @@ import Home from "./pages/home/Home";
 import MyPage from "./pages/mypage/MyPage";
 import Ranking from "./pages/ranking/Ranking";
 import Login from "./pages/login/Login";
-import axios from "axios";
+
 import { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
-import { userRecoil } from "./recoil";
+
 import { auth } from "./pages/login/Firebase";
 
 const Layout = () => {

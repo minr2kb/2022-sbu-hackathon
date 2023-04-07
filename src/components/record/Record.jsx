@@ -78,21 +78,21 @@ const Record = ({ data = basedata }) => {
 					alignItems={"center"}
 					justifyContent={"space-between"}
 				>
-					<Typography variant="body2">{username}</Typography>
+					<Typography variant="body2">{recordData.name}</Typography>
 					<Grid container alignItems={"center"}>
+						<LocationOnRounded
+							color="primary"
+							sx={{ fontSize: "15px", mr: 0.5 }}
+						/>
 						<Typography variant="body5">
 							{recordData.region}
 						</Typography>
 					</Grid>
 				</Grid>
 				<Grid container alignItems={"center"}>
-					<LocationOnRounded
-						color="primary"
-						sx={{ fontSize: "15px", mr: 0.5 }}
-					/>
 					<Typography variant="body5" color={"text.secondary"}>
-						Stony Brook, NY / {recordData.distance} miles /{" "}
-						{recordData.weight}kg /{recordData.duration}
+						Stony Brook, NY / {recordData.distance || "2.4"} miles /{" "}
+						{recordData.weight || 4.5}kg /{recordData.duration}
 					</Typography>
 				</Grid>
 			</Grid>

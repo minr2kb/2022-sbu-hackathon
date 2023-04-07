@@ -21,6 +21,7 @@ import { ResponsiveLine } from "@nivo/line";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../login/Firebase";
+import axios from "axios";
 
 const distData = [
 	{
@@ -56,24 +57,24 @@ const weightData = [
 ];
 
 const values = {
-	"2022-09-01": 1,
-	"2022-09-03": 1,
-	"2022-09-06": 3,
-	"2022-09-07": 2,
-	"2022-09-08": 4,
-	"2022-09-13": 1,
-	"2022-09-19": 1,
-	"2022-09-20": 3,
-	"2022-09-21": 2,
-	"2022-09-22": 4,
-	"2022-08-01": 1,
-	"2022-08-03": 1,
-	"2022-08-06": 3,
-	"2022-08-07": 2,
-	"2022-08-08": 4,
-	"2022-08-13": 1,
-	"2022-08-19": 1,
-	"2022-08-20": 3,
+	"2023-02-01": 1,
+	"2023-02-03": 1,
+	"2023-02-06": 3,
+	"2023-02-07": 2,
+	"2023-02-08": 4,
+	"2023-02-13": 1,
+	"2023-02-19": 1,
+	"2023-02-20": 3,
+	"2023-02-21": 2,
+	"2023-02-22": 4,
+	"2023-03-01": 1,
+	"2023-03-03": 1,
+	"2023-03-06": 3,
+	"2023-03-07": 2,
+	"2023-03-08": 4,
+	"2023-03-13": 1,
+	"2023-03-19": 1,
+	"2023-03-20": 3,
 	"2022-07-21": 2,
 	"2022-06-22": 4,
 };
@@ -97,6 +98,7 @@ const MyPage = () => {
 	const [chartMode, setChartMode] = useState("distance");
 	const [openModal, setOpenModal] = useState(false);
 	const [user, setUser] = useState(undefined);
+	const [records, setRecords] = useState([]);
 	const navigate = useNavigate();
 
 	const { isLoaded } = useJsApiLoader({
@@ -112,6 +114,39 @@ const MyPage = () => {
 	const handleClose = () => {
 		setOpenModal(false);
 	};
+
+	useEffect(() => {
+		if (user)
+			axios
+				.get(`https://sbuhackathon2022.herokuapp.com/user/73539`)
+				.then(res => setRecords(res.data.records));
+		else {
+			setRecords([
+				{
+					stationID: 1,
+					name: "Grace Hopper",
+					duration: "01:20:32",
+					weight: 2,
+					distance: "2.8",
+					region: "Stony Brook, NY",
+				},
+				{
+					name: "Yoshitake Miura",
+					duration: "00:42:17",
+					weight: 0.8,
+					distance: "1.2",
+					region: "Stony Brook, NY",
+				},
+				{
+					name: "Ada Lovelace",
+					duration: "00:12:09",
+					weight: 0.2,
+					distance: "0.8",
+					region: "Stony Brook, NY",
+				},
+			]);
+		}
+	}, [user]);
 
 	useEffect(() => {
 		if (auth?.currentUser) setUser(auth?.currentUser);
@@ -256,43 +291,41 @@ const MyPage = () => {
 					panelAttributes={{ rx: 3, ry: 3 }}
 				/>
 			</Grid>
-			{[1, 2, 3, 4, 5, 6, 7, 8, 9]
-				.slice(5 * (page - 1), 5 * page)
-				.map((v, i) => (
-					<Grid
-						key={`recent-activity-${i}`}
-						p={2}
-						mt={2}
-						container
-						sx={{
-							boxShadow: "2px 2px 10px 2px #EEE",
-							borderRadius: "15px",
-						}}
-						alignItems={"center"}
-						onClick={handleClickOpen}
-					>
-						<Grid p={1}>
-							<Typography variant="subtitle2">{v}</Typography>
-						</Grid>
-						<Grid container alignItems={"center"} flex={1} ml={1}>
-							<Grid container alignItems={"center"}>
-								<Typography variant="body2">
-									Stony Brook, NY
-								</Typography>
-								<LocationOnRounded
-									color="primary"
-									sx={{ fontSize: "18px", ml: 0.5 }}
-								/>
-							</Grid>
-							<Typography
-								variant="body5"
-								color={"text.secondary"}
-							>
-								2.4 miles / 0.3 kg / 50:24:38
-							</Typography>
-						</Grid>
+			{records.slice(5 * (page - 1), 5 * page).map((record, i) => (
+				<Grid
+					key={`recent-activity-${i}`}
+					p={2}
+					mt={2}
+					container
+					sx={{
+						boxShadow: "2px 2px 10px 2px #EEE",
+						borderRadius: "15px",
+					}}
+					alignItems={"center"}
+					onClick={handleClickOpen}
+				>
+					<Grid p={1}>
+						<Typography variant="subtitle2">
+							{record.stationID}
+						</Typography>
 					</Grid>
-				))}
+					<Grid container alignItems={"center"} flex={1} ml={1}>
+						<Grid container alignItems={"center"}>
+							<Typography variant="body2">
+								Stony Brook, NY
+							</Typography>
+							<LocationOnRounded
+								color="primary"
+								sx={{ fontSize: "18px", ml: 0.5 }}
+							/>
+						</Grid>
+						<Typography variant="body5" color={"text.secondary"}>
+							{record.distance} miles / {record.weight} kg /{" "}
+							{record.duration}
+						</Typography>
+					</Grid>
+				</Grid>
+			))}
 			<Grid container justifyContent={"center"} mt={3} mb={3}>
 				<Pagination
 					variant="text"
@@ -335,7 +368,7 @@ const MyPage = () => {
 							variant="body5"
 							// color={"text.secondary"}
 						>
-							2022-09-22
+							2023-02-22
 						</Typography>
 					</Grid>
 					<Grid container alignItems={"center"} mt={1}>

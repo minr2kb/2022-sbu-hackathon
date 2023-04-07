@@ -62,10 +62,14 @@ function GoogleMapComponent() {
 					lat: position.coords.latitude,
 					lng: position.coords.longitude,
 				});
+				// setCenter({
+				// 	lat: 40.9151532,
+				// 	lng: -73.1244591,
+				// });
 
 				count.current = count.current + 1;
 
-				if (count.current % 20 === 0) {
+				if (count.current % 10 === 0) {
 					pointRecord.current = [
 						...pointRecord.current,
 						position.coords,
@@ -99,6 +103,10 @@ function GoogleMapComponent() {
 				lat: position.coords.latitude,
 				lng: position.coords.longitude,
 			});
+			// setCenter({
+			// 	lat: 40.9151532,
+			// 	lng: -73.1244591,
+			// });
 		});
 	}, []);
 

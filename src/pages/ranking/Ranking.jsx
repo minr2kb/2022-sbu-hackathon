@@ -31,37 +31,60 @@ const Ranking = () => {
 				`https://sbuhackathon2022.herokuapp.com/user/ranking?method=distance`
 			)
 			.then(res => setDistanceRank(res.data));
+		// setDistanceRank([
+		// 	{
+		// 		name: "Grace Hopper",
+		// 		duration: "01:20:32",
+		// 		weight: 2,
+		// 		distance: "2.8",
+		// 		region: "Stony Brook, NY",
+		// 	},
+		// 	{
+		// 		name: "Yoshitake Miura",
+		// 		duration: "00:42:17",
+		// 		weight: 0.8,
+		// 		distance: "1.2",
+		// 		region: "Stony Brook, NY",
+		// 	},
+		// 	{
+		// 		name: "Ada Lovelace",
+		// 		duration: "00:12:09",
+		// 		weight: 0.2,
+		// 		distance: "0.8",
+		// 		region: "Stony Brook, NY",
+		// 	},
+		// ]);
 	}, []);
 	//
+
 	// const podiumData = [
-	//
-	// {
-	// 	//
-	// 	id: "1tfjiELNrwYAJeafRYlT9RwOIiD", //
-	// 	name: "Grace Hopper", //
-	// }, //
-	// {
-	// 	//
-	// 	id: "1tfjiFrbdLWlPI52dRLhNlD", //
-	// 	name: "Yoshitake Miura", //
-	// }, //
-	// {
-	// 	//
-	// 	id: "1tfjiDIAS8f2UYgV9yi7rZD", //
-	// 	name: "Ada Lovelace", //
-	// }, //
-	// {
-	// 	//
-	// 	id: "1tfjiEIWBZz2I9lOQYTEeMICALg", //
-	// 	ame: "Grete Hermann", //
-	// }, //
-	// {
-	// 	//
-	// 	id: "1tfjiCMU9SdFM9BAaIF3mS5UpYf", //
-	// 	name: "Ch Asakawa", //
-	// }, //
+	// 	{
+	// 		id: "1tfjiELNrwYAJeafRYlT9RwOIiD",
+	// 		name: "Grace Hopper",
+	// 		userID: 1,
+	// 	},
+	// 	{
+	// 		id: "1tfjiFrbdLWlPI52dRL5NlD",
+	// 		name: "Yoshitake Miura",
+	// 		userID: 2,
+	// 	},
+	// 	{
+	// 		id: "1tfjiDIAS8f2UYgV2yi7rZD",
+	// 		name: "Ada Lovelace",
+	// 		userID: 3,
+	// 	},
+	// 	{
+	// 		id: "1tfriEIWBZz2I9lOQYTEeMICALg",
+	// 		name: "Grete Hermann",
+	// 		userID: 4,
+	// 	},
+	// 	{
+	// 		id: "2tfjiCMU9SdFM9BAaIF3mS5UpYf",
+	// 		name: "Ch Asakawa",
+	// 		userID: 5,
+	// 	},
 	// ].map((winner, position) => {
-	// 	return { ...winner, position }; // ;
+	// 	return { ...winner, position };
 	// });
 	const podiumData = weightRank.map((winner, position) => {
 		return { ...winner, position };

@@ -141,10 +141,11 @@ export default function SwipeableTemporaryDrawer() {
 					position: "absolute",
 					height: "10vh",
 					zIndex: 999,
-					left: "32vw",
+					left: 0,
 					bottom: 80,
-					width: "50vw",
+					width: "100vw",
 					justifyContent: "center",
+					display: "flex",
 				}}
 			>
 				<FloatingButton />
