@@ -22,13 +22,13 @@ const Login = () => {
 	// }, []);
 
 	const firebaseConfig = {
-		apiKey: "AIzaSyCNiuCYETOdSERFopQai0Qmhoxelz3RZl4",
-		authDomain: "hackathon-179b9.firebaseapp.com",
-		projectId: "hackathon-179b9",
-		storageBucket: "hackathon-179b9.appspot.com",
-		messagingSenderId: "150645939019",
-		appId: "1:150645939019:web:1661b690b76435363ba6ce",
-		measurementId: "G-NGTT7MJ4RZ",
+		apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+		authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+		projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+		storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+		messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+		appId: process.env.REACT_APP_FIREBASE_APP_ID,
+		measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 	};
 
 	// Initialize Firebase
